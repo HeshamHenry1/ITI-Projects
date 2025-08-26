@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Vet to Pet - Veterinary Care & Pet Services</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        // Robust image fallback (runs early, fixes existing and future images)
+        (function() {
+            var placeholder = 'https://via.placeholder.com/400x300?text=No+Image';
+            function applyFallback(img){
+                if (!img || img.dataset.fallback) return;
+                img.dataset.fallback = '1';
+                img.src = placeholder;
+                img.style.objectFit = 'cover';
+            }
+            function checkAndFix(img){
+                if (!img) return;
+                if (!img.complete || img.naturalWidth === 0) {
+                    applyFallback(img);
+                }
+                if (!img._onerrorBound) {
+                    img.onerror = function(){ applyFallback(img); };
+                    img._onerrorBound = true;
+                }
+            }
+            function init(){
+                var imgs = document.getElementsByTagName('img');
+                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
+                var mo = new MutationObserver(function(muts){
+                    for (var k=0;k<muts.length;k++){
+                        var m = muts[k];
+                        for (var j=0;j<m.addedNodes.length;j++){
+                            var node = m.addedNodes[j];
+                            if (node.tagName === 'IMG') checkAndFix(node);
+                            else if (node.querySelectorAll){
+                                var newImgs = node.querySelectorAll('img');
+                                for (var n=0;n<newImgs.length;n++){ checkAndFix(newImgs[n]); }
+                            }
+                        }
+                    }
+                });
+                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+            }
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        })();
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-phone"></i> الطوارئ: 0123456789</span>
+                    <span><i class="fas fa-clock"></i> رعاية بيطرية 24/7</span>
+                </div>
+                <div class="top-bar-right">
+                    <div class="language-selector">
+                        <select>
+                            <option value="ar" selected>العربية</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-heartbeat"></i> Best Vet to Pet</h1>
+                    <p>رعاية الحيوانات الأليفة والخدمات البيطرية المتميزة</p>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">الخدمات <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="fas fa-stethoscope"></i> الرعاية البيطرية</a></li>
+                                <li><a href="#"><i class="fas fa-cut"></i> جراحات الحيوانات</a></li>
+                                <li><a href="#"><i class="fas fa-syringe"></i> التطعيمات</a></li>
+                                <li><a href="#"><i class="fas fa-ambulance"></i> رعاية الطوارئ</a></li>
+                                <li><a href="#"><i class="fas fa-home"></i> زيارات منزلية</a></li>
+                                <li><a href="#"><i class="fas fa-microscope"></i> فحوصات مخبرية</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">المنتجات <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
+                                <li><a href="#"><i class="fas fa-bone"></i> طعام الحيوانات</a></li>
+                                <li><a href="#"><i class="fas fa-pills"></i> الأدوية</a></li>
+                                <li><a href="#"><i class="fas fa-cog"></i> الإكسسوارات</a></li>
+                                <li><a href="#"><i class="fas fa-tshirt"></i> ملابس الحيوانات</a></li>
+                                <li><a href="#"><i class="fas fa-gamepad"></i> ألعاب الحيوانات</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="ابحث في المنتجات...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="action-icons">
+                        <a href="#" class="wishlist"><i class="far fa-heart"></i></a>
+                        <a href="cart.html" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="login.html" class="login-btn">تسجيل الدخول</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>رعاية بيطرية احترافية لحيواناتك الأليفة المحبوبة</h2>
+                    <p>تواصل مع أطباء بيطريين معتمدين واحصل على خدمات رعاية الحيوانات الأليفة المتميزة. من الفحوصات الروتينية إلى رعاية الطوارئ، نحن هنا لحيواناتك 24/7.</p>
+                    <div class="hero-buttons">
+                        <a href="products.html" class="btn btn-primary">تسوق المنتجات</a>
+                        <a href="contact.html" class="btn btn-secondary">احجز موعد</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="طبيب بيطري" class="hero-img">
+                        <h3>أطباء بيطريون خبراء</h3>
+                        <p>متخصصون معتمدون جاهزون لرعاية حيواناتك</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>لماذا تختار بيست فيت تو بيت؟</h2>
+                <p>نقدم حلول رعاية الحيوانات الأليفة الشاملة بأعلى المعايير</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=300&h=200&fit=crop" alt="رعاية احترافية" class="feature-img">
+                    <h3>رعاية احترافية</h3>
+                    <p>أطباء بيطريون مرخصون مع سنوات من الخبرة في رعاية الحيوانات الأليفة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1587764379873-97837921fd44?w=300&h=200&fit=crop" alt="طوارئ 24/7" class="feature-img">
+                    <h3>طوارئ 24/7</h3>
+                    <p>خدمات بيطرية طارئة على مدار الساعة للرعاية العاجلة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1601758228041-3ca9aa8be4c6?w=300&h=200&fit=crop" alt="منتجات متميزة" class="feature-img">
+                    <h3>منتجات متميزة</h3>
+                    <p>مجموعة مختارة من طعام الحيوانات والأدوية والإمدادات عالية الجودة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=300&h=200&fit=crop" alt="زيارات منزلية" class="feature-img">
+                    <h3>زيارات منزلية</h3>
+                    <p>خدمات بيطرية منزلية مريحة لراحتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>خدماتنا ومنتجاتنا</h2>
+                <p>حلول رعاية الحيوانات الأليفة الشاملة لكل احتياج</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=300&h=200&fit=crop" alt="الخدمات البيطرية" class="category-img">
+                    <h3>الخدمات البيطرية</h3>
+                    <p>رعاية طبية احترافية لحيواناتك</p>
+                    <a href="#" class="category-link">اعرف المزيد</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1587764379873-97837921fd44?w=300&h=200&fit=crop" alt="التطعيمات" class="category-img">
+                    <h3>التطعيمات</h3>
+                    <p>تطعيمات أساسية للحفاظ على صحة حيواناتك</p>
+                    <a href="#" class="category-link">اعرف المزيد</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="الجراحات" class="category-img">
+                    <h3>الجراحات</h3>
+                    <p>إجراءات جراحية متقدمة بأحدث المعدات</p>
+                    <a href="#" class="category-link">اعرف المزيد</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1601758228041-3ca9aa8be4c6?w=300&h=200&fit=crop" alt="طعام الحيوانات" class="category-img">
+                    <h3>طعام الحيوانات</h3>
+                    <p>تغذية متميزة لصحة مثالية للحيوانات</p>
+                    <a href="products.html" class="category-link">تسوق الآن</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&h=200&fit=crop" alt="الأدوية" class="category-img">
+                    <h3>الأدوية</h3>
+                    <p>أدوية بوصفة طبية وبدون وصفة</p>
+                    <a href="products.html" class="category-link">تسوق الآن</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=300&h=200&fit=crop" alt="الإكسسوارات" class="category-img">
+                    <h3>الإكسسوارات</h3>
+                    <p>إكسسوارات ومعدات رعاية الحيوانات الأساسية</p>
+                    <a href="products.html" class="category-link">تسوق الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-heartbeat"></i> بيست فيت تو بيت</h3>
+                    <p>شريكك الموثوق في رعاية الحيوانات الأليفة. خدمات بيطرية احترافية ومنتجات متميزة لصحة وسعادة حيواناتك المحبوبة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>الخدمات</h4>
+                    <ul>
+                        <li><a href="#">الرعاية البيطرية</a></li>
+                        <li><a href="#">خدمات الطوارئ</a></li>
+                        <li><a href="#">التطعيمات</a></li>
+                        <li><a href="#">الجراحات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>معلومات الاتصال</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 شارع رعاية الحيوانات، المدينة، المحافظة 12345</p>
+                        <p><i class="fas fa-phone"></i> 0123456789</p>
+                        <p><i class="fas fa-envelope"></i> info@bestvettopet.com</p>
+                        <p><i class="fas fa-clock"></i> رعاية طوارئ 24/7</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 بيست فيت تو بيت. جميع الحقوق محفوظة. | رعاية الحيوانات الأليفة والخدمات البيطرية الاحترافية</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    menu.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        menu.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
