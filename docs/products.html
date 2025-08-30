@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Happet</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        (function() {
+            var placeholder = 'https://via.placeholder.com/400x300?text=No+Image';
+            function applyFallback(img){
+                if (!img || img.dataset.fallback) return;
+                img.dataset.fallback = '1';
+                img.src = placeholder;
+                img.style.objectFit = 'cover';
+            }
+            function checkAndFix(img){
+                if (!img) return;
+                if (!img.complete || img.naturalWidth === 0) {
+                    applyFallback(img);
+                }
+                if (!img._onerrorBound) {
+                    img.onerror = function(){ applyFallback(img); };
+                    img._onerrorBound = true;
+                }
+            }
+            function init(){
+                var imgs = document.getElementsByTagName('img');
+                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
+                var mo = new MutationObserver(function(muts){
+                    for (var k=0;k<muts.length;k++){
+                        var m = muts[k];
+                        for (var j=0;j<m.addedNodes.length;j++){
+                            var node = m.addedNodes[j];
+                            if (node.tagName === 'IMG') checkAndFix(node);
+                            else if (node.querySelectorAll){
+                                var newImgs = node.querySelectorAll('img');
+                                for (var n=0;n<newImgs.length;n++){ checkAndFix(newImgs[n]); }
+                            }
+                        }
+                    }
+                });
+                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+            }
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        })();
+    </script>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="shipping-info">
+                        <span><i class="fas fa-truck"></i> شحن مجاني لاي أوردر فوق 1000ج في القاهرة والجيزة</span>
+                        <span><i class="fas fa-clock"></i> توصيل نفس اليوم لاي طلب قبل 1 ظهرا</span>
+                        <span><i class="fas fa-headset"></i> خدمة العملاء من 10ص الي 10م</span>
+                    </div>
+                    <div class="language-selector">
+                        <select>
+                            <option>العربية</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <h1>Happet</h1>
+                        </a>
+                    </div>
+                    
+                    <ul class="nav-menu">
+                        <li class="dropdown">
+                            <a href="dogs.html">مستلزمات الكلاب <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dog-food.html">أكل الكلاب</a></li>
+                                <li><a href="dog-health.html">الصيدلة والعناية الصحية</a></li>
+                                <li><a href="dog-accessories.html">الإكسسوارات اليومية</a></li>
+                                <li><a href="dog-toys.html">ألعاب الذكاء والتحفيز</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="cats.html">مستلزمات القطط <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="cat-food.html">أكل القطط</a></li>
+                                <li><a href="cat-health.html">الصيدلة والعناية الصحية</a></li>
+                                <li><a href="cat-accessories.html">اكسسوارات</a></li>
+                                <li><a href="cat-litter.html">رمل القطط</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="brands.html">العلامات التجارية</a></li>
+                        <li><a href="offers.html">خصومات اليوم</a></li>
+                    </ul>
+                    
+                    <div class="nav-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="ابحث في موقعنا...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="wishlist.html" class="wishlist-icon">
+                            <i class="fas fa-heart"></i>
+                            <span class="count">0</span>
+                        </a>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="count">0</span>
+                        </a>
+                        <a href="login.html" class="login-btn">تسجيل الدخول</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>جميع المنتجات</h1>
+            <nav class="breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <span>/</span>
+                <span>المنتجات</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-content">
+                <div class="filter-group">
+                    <label>الفئة:</label>
+                    <select>
+                        <option>جميع الفئات</option>
+                        <option>أكل الكلاب</option>
+                        <option>أكل القطط</option>
+                        <option>الإكسسوارات</option>
+                        <option>الصيدلة والعناية</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>السعر:</label>
+                    <select>
+                        <option>جميع الأسعار</option>
+                        <option>أقل من 100 ج</option>
+                        <option>100 - 300 ج</option>
+                        <option>300 - 500 ج</option>
+                        <option>أكثر من 500 ج</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>العلامة التجارية:</label>
+                    <select>
+                        <option>جميع العلامات</option>
+                        <option>Royal Canin</option>
+                        <option>Purina</option>
+                        <option>Whiskas</option>
+                        <option>Pedigree</option>
+                    </select>
+                </div>
+                
+                <div class="view-options">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product1.jpg" alt="Royal Canin للكلاب">
+                        <div class="product-badges">
+                            <span class="badge new">جديد</span>
+                            <span class="badge discount">-15%</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Royal Canin للكلاب البالغة</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.8)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">450 ج.م</span>
+                            <span class="old-price">530 ج.م</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            أضف للسلة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product2.jpg" alt="Whiskas للقطط">
+                        <div class="product-badges">
+                            <span class="badge bestseller">الأكثر مبيعاً</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Whiskas أكل رطب للقطط</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.2)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">120 ج.م</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            أضف للسلة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product3.jpg" alt="طوق كلاب">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>طوق جلدي للكلاب</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.9)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">280 ج.م</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            أضف للسلة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product4.jpg" alt="رمل القطط">
+                        <div class="product-badges">
+                            <span class="badge discount">-20%</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>رمل القطط عالي الامتصاص</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">160 ج.م</span>
+                            <span class="old-price">200 ج.م</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            أضف للسلة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Table -->
+    <section class="products-table-section">
+        <div class="container">
+            <h2 class="section-title">جدول المنتجات المميزة</h2>
+            <div class="table-container">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>الصورة</th>
+                            <th>اسم المنتج</th>
+                            <th>الفئة</th>
+                            <th>العلامة التجارية</th>
+                            <th>السعر</th>
+                            <th>التقييم</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="images/product1.jpg" alt="Royal Canin" class="table-product-image">
+                            </td>
+                            <td>Royal Canin للكلاب البالغة</td>
+                            <td>أكل الكلاب</td>
+                            <td>Royal Canin</td>
+                            <td>
+                                <span class="current-price">450 ج.م</span>
+                                <span class="old-price">530 ج.م</span>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(4.8)</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status in-stock">متوفر</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">أضف للسلة</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="images/product2.jpg" alt="Whiskas" class="table-product-image">
+                            </td>
+                            <td>Whiskas أكل رطب للقطط</td>
+                            <td>أكل القطط</td>
+                            <td>Whiskas</td>
+                            <td>
+                                <span class="current-price">120 ج.م</span>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(4.2)</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status in-stock">متوفر</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">أضف للسلة</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="images/product3.jpg" alt="طوق كلاب" class="table-product-image">
+                            </td>
+                            <td>طوق جلدي للكلاب</td>
+                            <td>الإكسسوارات</td>
+                            <td>Pet Accessories</td>
+                            <td>
+                                <span class="current-price">280 ج.م</span>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(4.9)</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status low-stock">كمية محدودة</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">أضف للسلة</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="images/product4.jpg" alt="رمل القطط" class="table-product-image">
+                            </td>
+                            <td>رمل القطط عالي الامتصاص</td>
+                            <td>رمل القطط</td>
+                            <td>Cat Litter Pro</td>
+                            <td>
+                                <span class="current-price">160 ج.م</span>
+                                <span class="old-price">200 ج.م</span>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(4.0)</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status out-of-stock">غير متوفر</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-secondary" disabled>غير متوفر</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="pagination-section">
+        <div class="container">
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">5</a>
+                <a href="#" class="page-link next">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>خدمة العملاء</h3>
+                    <p>من 10 صباحاً إلى 10 مساءً طول ايام الاسبوع</p>
+                    <p>متاح الدعم عبر الهاتف أو الواتساب أو الماسنجر</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 01022337450</p>
+                        <p><i class="fas fa-envelope"></i> care@happet.net</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="shipping.html">سياسة الشحن والاسترجاع</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>النشرة البريدية</h3>
+                    <p>نقوم بإرسال خصومات، واشعارات باحدث وافضل المنتجات</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريد إلكتروني" required>
+                        <button type="submit">انضم لنا</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Happet store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+

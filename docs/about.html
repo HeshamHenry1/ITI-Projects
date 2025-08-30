@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Best Vet to Pet</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function() {
+            var placeholder = 'https://via.placeholder.com/800x500?text=No+Image';
+            function applyFallback(img){
+                if (!img || img.dataset.fallback) return;
+                img.dataset.fallback = '1';
+                img.src = placeholder;
+                img.style.objectFit = 'cover';
+            }
+            function checkAndFix(img){
+                if (!img) return;
+                if (!img.complete || img.naturalWidth === 0) {
+                    applyFallback(img);
+                }
+                if (!img._onerrorBound) {
+                    img.onerror = function(){ applyFallback(img); };
+                    img._onerrorBound = true;
+                }
+            }
+            function init(){
+                var imgs = document.getElementsByTagName('img');
+                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
+                var mo = new MutationObserver(function(muts){
+                    muts.forEach(function(m){
+                        m.addedNodes.forEach(function(node){
+                            if (node.tagName === 'IMG') checkAndFix(node);
+                            else if (node.querySelectorAll){
+                                node.querySelectorAll('img').forEach(checkAndFix);
+                            }
+                        });
+                    });
+                });
+                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+            }
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        })();
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-heartbeat"></i> Best Vet to Pet</h1>
+                    <p>رعاية الحيوانات الأليفة والخدمات البيطرية المتميزة</p>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="login.html" class="login-btn"><i class="fas fa-user-md"></i> تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>من نحن</h2>
+                    <p>نحن فريق متخصص في الرعاية البيطرية وخدمات الحيوانات الأليفة. هدفنا تقديم رعاية صحية متكاملة ومهنية لحيواناتكم، عبر فريق من الأطباء البيطريين الخبراء وخدمات متنوعة تشمل الفحوصات الدورية، الطوارئ، التطعيمات، والزيارات المنزلية.</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">+15</span>
+                            <span class="stat-label">سنة خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">+20k</span>
+                            <span class="stat-label">حيوان أليف تم خدمته</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">رعاية طوارئ</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=1200&h=800&fit=crop" alt="فريق بيطري" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>رسالتنا</h3>
+                    <p>تقديم أفضل رعاية بيطرية لحيواناتكم الأليفة، مع التركيز على الجودة والرحمة والالتزام بمعايير سلامة عالمية.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>رؤيتنا</h3>
+                    <p>أن نكون الوجهة الأولى للرعاية البيطرية الشاملة في منطقتنا، بخدمات مبتكرة وتجربة عميل مميزة.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>قيمنا</h3>
+                    <p>الاحترافية، الشفافية، التعاطف، والالتزام المستمر بتطوير مهارات فريقنا وخدماتنا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>قصتنا</h2>
+                    <p>بدأت رحلتنا منذ أكثر من عقد بخطوة بسيطة: توفير رعاية صحية موثوقة للحيوانات الأليفة. ومع الوقت، توسع فريقنا وخدماتنا لنغطي احتياجات أوسع، دون التنازل عن الجودة أو الاهتمام الفردي بكل حالة.</p>
+                    <p>اليوم نقدم مجموعة متكاملة من الخدمات: الفحوصات، العمليات الجراحية، التطعيمات، الطوارئ، وخدمات المنتجات المتخصصة عبر متجرنا.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1200&h=800&fit=crop" alt="عيادة بيطرية" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-header">فريقنا</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="طبيب بيطري" />
+                    </div>
+                    <div class="member-info">
+                        <h3>د. أحمد علي</h3>
+                        <div class="member-position">استشاري طب وجراحة</div>
+                        <div class="member-description">خبرة واسعة في الجراحات المعقدة ورعاية الطوارئ للحيوانات الأليفة.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&h=600&fit=crop" alt="أخصائي" />
+                    </div>
+                    <div class="member-info">
+                        <h3>د. سارة محمود</h3>
+                        <div class="member-position">أخصائي باطنة وتطعيمات</div>
+                        <div class="member-description">مهتمة ببرامج الوقاية والتطعيمات ومتابعة الحالات المزمنة.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop" alt="فني" />
+                    </div>
+                    <div class="member-info">
+                        <h3>م. كريم منصور</h3>
+                        <div class="member-position">فني أشعة ومختبر</div>
+                        <div class="member-description">مسؤول عن الفحوصات المخبرية والتشخيص بالأشعة مع دقة عالية.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-header">لماذا نحن؟</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>أمان وثقة</h3>
+                    <p>نلتزم بحماية حيواناتكم وخصوصيتكم عبر معايير أمان عالية.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-user-md"></i></div>
+                    <h3>خبرة وكفاءة</h3>
+                    <p>فريق محترف يعمل وفق أحدث الممارسات الطبية البيطرية.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>شراكة دائمة</h3>
+                    <p>نعتبر أنفسنا شريككم في رحلة العناية بحيواناتكم على المدى الطويل.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-home"></i></div>
+                    <h3>زيارات منزلية</h3>
+                    <p>خدمة مرنة ومريحة لتقليل التوتر على الحيوانات الأليفة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>جاهز تحجز موعد؟</h2>
+                <p>تواصل مع فريقنا اليوم واحصل على رعاية مهنية لحيوانك الأليف. نسعد بخدمتكم على مدار الساعة.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">احجز الآن</a>
+                    <a href="products.html" class="btn btn-secondary">تسوق المنتجات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-heartbeat"></i> Best Vet to Pet</h3>
+                    <p>شريكك الموثوق في رعاية الحيوانات الأليفة. خدمات بيطرية احترافية ومنتجات متميزة لصحة وسعادة حيواناتك المحبوبة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>معلومات الاتصال</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 شارع رعاية الحيوانات، المدينة، المحافظة 12345</p>
+                        <p><i class="fas fa-phone"></i> 0123456789</p>
+                        <p><i class="fas fa-envelope"></i> info@bestvettopet.com</p>
+                        <p><i class="fas fa-clock"></i> رعاية طوارئ 24/7</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Best Vet to Pet. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
