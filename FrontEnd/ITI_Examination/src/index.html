@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ITI Examination - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+  </head>
+  <body>
+    <div data-mount="nav"></div>
+
+    <header class="hero">
+      <div class="container">
+        <span class="badge">Institute Testing Portal</span>
+        <h1>ITI Online Examination System</h1>
+        <p>A modern interface to manage courses, students, questions, exams, and grades.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="exams.html">Start Exam</a>
+          <a class="btn btn-secondary" href="courses.html">Browse Courses</a>
+        </div>
+      </div>
+      <div class="hero-graphics" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <h2 class="section-title">Why this platform?</h2>
+      <p class="section-subtitle">that site make you able to manage your courses, students, questions, choices, exams, and results.</p>
+      <section class="grid grid-3" id="features"></section>
+    </main>
+
+    <div data-mount="footer"></div>
+
+    <script type="module">
+      import { renderCardGrid } from './assets/js/app.js';
+      const features = [
+        { title: 'Exam Management', text: 'Create sessions and link to courses and topics.', badge: 'Exams' },
+        { title: 'Question Bank', text: 'Multiple question types with choices and model answers.', badge: 'Questions' },
+        { title: 'Students Dashboard', text: 'Register students and track grades in real time.', badge: 'Students' },
+        { title: 'Instructors', text: 'Assign instructors to courses and manage permissions.', badge: 'Instructors' },
+        { title: 'Reports', text: 'Fast analytics and organized grade tables.', badge: 'Reports' },
+        { title: 'Great UX', text: 'Clean English UI with solid performance and lazy loading.', badge: 'UX' }
+      ];
+      renderCardGrid('#features', features);
+    </script>
+    <script src="assets/js/components.js" defer></script>
+  </body>
+</html>
+
+

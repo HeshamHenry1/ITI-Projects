@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reports - ITI Examination</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+  </head>
+  <body>
+    <div data-mount="nav"></div>
+    <main class="container section">
+      <h1 class="section-title">Reports</h1>
+      <p class="section-subtitle">Frontend-only simulations of the requested SQL reports.</p>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3>Students by Department</h3>
+          <label>Department ID</label>
+          <input id="deptId" type="number" value="10" />
+          <div class="mt-12">
+            <button class="btn btn-secondary" id="btnDept">Run</button>
+          </div>
+          <div class="mt-12">
+            <table>
+              <thead><tr><th>Student ID</th><th>Name</th><th>Department</th></tr></thead>
+              <tbody id="tblDept"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Student Grades in All Courses</h3>
+          <label>Student ID</label>
+          <input id="stId" type="number" value="1001" />
+          <div class="mt-12">
+            <button class="btn btn-secondary" id="btnGrades">Run</button>
+          </div>
+          <div class="mt-12">
+            <table>
+              <thead><tr><th>Course</th><th>Exam</th><th>Grade %</th></tr></thead>
+              <tbody id="tblGrades"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Courses by Instructor with Student Count</h3>
+          <label>Instructor ID</label>
+          <input id="insId" type="number" value="2" />
+          <div class="mt-12">
+            <button class="btn btn-secondary" id="btnIns">Run</button>
+          </div>
+          <div class="mt-12">
+            <table>
+              <thead><tr><th>Course</th><th>Students</th></tr></thead>
+              <tbody id="tblIns"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Course Topics</h3>
+          <label>Course ID</label>
+          <input id="crsId" type="number" value="101" />
+          <div class="mt-12">
+            <button class="btn btn-secondary" id="btnTopics">Run</button>
+          </div>
+          <div class="mt-12">
+            <table>
+              <thead><tr><th>Topic Name</th></tr></thead>
+              <tbody id="tblTopics"></tbody>
+            </table>
+          </div>
+          <p class="muted mt-12">Note: topics are not explicitly provided in seed, so a small demo list is used.</p>
+        </section>
+
+        <section class="card">
+          <h3>Exam Questions and Choices</h3>
+          <label>Exam ID</label>
+          <input id="examId" type="number" value="500" />
+          <div class="mt-12">
+            <button class="btn btn-secondary" id="btnExamQ">Run</button>
+          </div>
+          <div class="mt-12">
+            <table>
+              <thead><tr><th>#</th><th>Question</th><th>Choices</th></tr></thead>
+              <tbody id="tblExamQ"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Exam Questions with Student Answers</h3>
+          <div class="grid grid-2">
+            <div>
+              <label>Exam ID</label>
+              <input id="examId2" type="number" value="500" />
+            </div>
+            <div>
+              <label>Student ID</label>
+              <input id="stId2" type="number" value="1001" />
+            </div>
+          </div>
+          <div class="mt-12">
+            <button class="btn btn-secondary" id="btnExamAns">Run</button>
+          </div>
+          <div class="mt-12">
+            <table>
+              <thead><tr><th>#</th><th>Question</th><th>Student Answer</th><th>Model Answer</th></tr></thead>
+              <tbody id="tblExamAns"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+    <div data-mount="footer"></div>
+    <script src="assets/js/components.js" defer></script>
+    <script type="module">
+      import { db } from './assets/js/data.js';
+
+      const $ = (sel) => document.querySelector(sel);
+      const join = (arr, sep=', ') => arr.join(sep);
+
+      $('#btnDept').onclick = () => {
+        const deptId = Number($('#deptId').value);
+        const dept = db.departments.find(d => d.Dept_ID === deptId);
+        const rows = db.students.filter(s => s.Dept_ID === deptId)
+          .map(s => `<tr><td>${s.St_ID}</td><td>${s.St_Fname} ${s.St_Lname}</td><td>${dept?.Dept_Name || ''}</td></tr>`)
+          .join('');
+        $('#tblDept').innerHTML = rows || '<tr><td colspan="3">No data</td></tr>';
+      };
+
+      $('#btnGrades').onclick = () => {
+        const stId = Number($('#stId').value);
+        const rows = db.studentExams.filter(se => se.St_ID === stId).map(se => {
+          const ex = db.exams.find(e => e.Exam_ID === se.Exam_ID);
+          const course = db.courses.find(c => c.Crs_ID === ex?.Crs_ID);
+          const grade = se.Exam_Grade == null ? '-' : se.Exam_Grade;
+          return `<tr><td>${course?.Crs_Name || ''}</td><td>${se.Exam_ID}</td><td>${grade}</td></tr>`;
+        }).join('');
+        $('#tblGrades').innerHTML = rows || '<tr><td colspan="3">No data</td></tr>';
+      };
+
+      $('#btnIns').onclick = () => {
+        const insId = Number($('#insId').value);
+        const rows = db.instructorCourses.filter(ic => ic.Ins_ID === insId).map(ic => {
+          const course = db.courses.find(c => c.Crs_ID === ic.Crs_ID);
+          const students = db.studentExams
+            .filter(se => db.exams.find(e => e.Exam_ID === se.Exam_ID)?.Crs_ID === ic.Crs_ID)
+            .map(se => se.St_ID);
+          const uniqueCount = new Set(students).size;
+          return `<tr><td>${course?.Crs_Name || ''}</td><td>${uniqueCount}</td></tr>`;
+        }).join('');
+        $('#tblIns').innerHTML = rows || '<tr><td colspan="2">No data</td></tr>';
+      };
+
+      $('#btnTopics').onclick = () => {
+        const crsId = Number($('#crsId').value);
+        // Demo topics since not provided
+        const demoTopics = {
+          101: ['SQL Basics', 'DDL', 'DML', 'Joins'],
+          102: ['PHP Basics', 'OOP', 'Laravel'],
+          201: ['NumPy', 'Pandas', 'Visualization'],
+          202: ['Regression', 'Classification', 'Evaluation'],
+          301: ['C Basics', 'Pointers', 'Memory']
+        };
+        const rows = (demoTopics[crsId] || []).map(t => `<tr><td>${t}</td></tr>`).join('');
+        $('#tblTopics').innerHTML = rows || '<tr><td>No data</td></tr>';
+      };
+
+      $('#btnExamQ').onclick = () => {
+        const examId = Number($('#examId').value);
+        const qIds = db.examQuestions.filter(eq => eq.Exam_ID === examId).map(eq => eq.Q_ID);
+        const rows = qIds.map((qid, i) => {
+          const q = db.questions.find(x => x.Q_ID === qid);
+          const ch = db.choices.filter(c => c.Q_ID === qid).map(c => c.Choice_Text);
+          return `<tr><td>${i+1}</td><td>${q?.Q_Text || ''}</td><td>${join(ch)}</td></tr>`;
+        }).join('');
+        $('#tblExamQ').innerHTML = rows || '<tr><td colspan="3">No data</td></tr>';
+      };
+
+      $('#btnExamAns').onclick = () => {
+        const examId = Number($('#examId2').value);
+        const stId = Number($('#stId2').value);
+        const qIds = db.examQuestions.filter(eq => eq.Exam_ID === examId).map(eq => eq.Q_ID);
+        const rows = qIds.map((qid, i) => {
+          const q = db.questions.find(x => x.Q_ID === qid);
+          const ans = db.studentAnswers.find(a => a.St_ID === stId && a.Exam_ID === examId && a.Q_ID === qid)?.Student_Answer || '-';
+          return `<tr><td>${i+1}</td><td>${q?.Q_Text || ''}</td><td>${ans}</td><td>${q?.Model_Answer || ''}</td></tr>`;
+        }).join('');
+        $('#tblExamAns').innerHTML = rows || '<tr><td colspan="4">No data</td></tr>';
+      };
+    </script>
+  </body>
+</html>
+
+

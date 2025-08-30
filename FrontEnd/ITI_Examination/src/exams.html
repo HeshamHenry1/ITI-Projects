@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Generate Exam - ITI Examination</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+  </head>
+  <body>
+    <div data-mount="nav"></div>
+    <main class="container section">
+      <h1 class="section-title"> We can generate exam for any course</h1>
+      <p class="section-subtitle">Select/Insert/Update/Delete + Exam Generation, Exam Answers, Exam Correction.</p>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3>Retrive data for any Courses</h3>
+          <div class="grid grid-2">
+            <div>
+              <label>ID</label>
+              <input id="crId" type="number" value="999" />
+            </div>
+            <div>
+              <label>Name</label>
+              <input id="crName" placeholder="New Course" />
+            </div>
+          </div>
+          <div class="grid grid-2 mt-12">
+            <div>
+              <label>Duration</label>
+              <input id="crDur" type="number" value="40" />
+            </div>
+            <div>
+              <label>Dept ID</label>
+              <input id="crDept" type="number" value="10" />
+            </div>
+          </div>
+          <div class="mt-12" style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-secondary" id="btnSelect">Select</button>
+            <button class="btn btn-primary" id="btnInsert">Insert</button>
+            <button class="btn btn-secondary" id="btnUpdate">Update</button>
+            <button class="btn btn-secondary" id="btnDelete">Delete</button>
+          </div>
+          <pre class="mt-12" id="crudOut" style="white-space:pre-wrap"></pre>
+        </section>
+
+        <section class="card">
+          <h3>Exam Generation</h3>
+          <p class="muted">Generate random exam for a Course ID by taking up to 10 questions.</p>
+          <label>Course ID</label>
+          <input id="genCrs" type="number" value="101" />
+          <div class="mt-12">
+            <button class="btn btn-primary" id="btnGen">Generate</button>
+          </div>
+          <pre class="mt-12" id="genOut" style="white-space:pre-wrap"></pre>
+        </section>
+
+        <section class="card">
+          <h3>Exam Answers</h3>
+          <div class="grid grid-3">
+            <div>
+              <label>Student ID</label>
+              <input id="ansSt" type="number" value="1001" />
+            </div>
+            <div>
+              <label>Exam ID</label>
+              <input id="ansEx" type="number" value="500" />
+            </div>
+            <div>
+              <label>Q ID</label>
+              <input id="ansQ" type="number" value="1" />
+            </div>
+          </div>
+          <label class="mt-12">Answer</label>
+          <input id="ansVal" placeholder="A / B / C / True / False" />
+          <div class="mt-12">
+            <button class="btn btn-primary" id="btnSaveAns">Save Answer</button>
+          </div>
+          <pre class="mt-12" id="ansOut" style="white-space:pre-wrap"></pre>
+        </section>
+
+        <section class="card">
+          <h3>Exam Correction</h3>
+          <div class="grid grid-2">
+            <div>
+              <label>Student ID</label>
+              <input id="corrSt" type="number" value="1001" />
+            </div>
+            <div>
+              <label>Exam ID</label>
+              <input id="corrEx" type="number" value="500" />
+            </div>
+          </div>
+          <div class="mt-12">
+            <button class="btn btn-primary" id="btnCorrect">Correct Exam</button>
+          </div>
+          <pre class="mt-12" id="corrOut" style="white-space:pre-wrap"></pre>
+        </section>
+      </div>
+    </main>
+    <div data-mount="footer"></div>
+    <script src="assets/js/components.js" defer></script>
+    <script type="module">
+      import { db } from './assets/js/data.js';
+
+      const $ = (s) => document.querySelector(s);
+      const out = (el, v) => el.textContent = typeof v === 'string' ? v : JSON.stringify(v, null, 2);
+
+      // CRUD
+      $('#btnSelect').onclick = () => {
+        out($('#crudOut'), db.courses);
+      };
+      $('#btnInsert').onclick = () => {
+        const c = { Crs_ID: Number($('#crId').value), Crs_Name: $('#crName').value || 'New Course', Crs_Duration: Number($('#crDur').value), Dept_ID: Number($('#crDept').value) };
+        if (db.courses.some(x => x.Crs_ID === c.Crs_ID)) return out($('#crudOut'), 'ID already exists');
+        db.courses.push(c); out($('#crudOut'), c);
+      };
+      $('#btnUpdate').onclick = () => {
+        const id = Number($('#crId').value);
+        const course = db.courses.find(x => x.Crs_ID === id);
+        if (!course) return out($('#crudOut'), 'Course not found');
+        course.Crs_Name = $('#crName').value || course.Crs_Name;
+        course.Crs_Duration = Number($('#crDur').value) || course.Crs_Duration;
+        course.Dept_ID = Number($('#crDept').value) || course.Dept_ID;
+        out($('#crudOut'), course);
+      };
+      $('#btnDelete').onclick = () => {
+        const id = Number($('#crId').value);
+        const idx = db.courses.findIndex(x => x.Crs_ID === id);
+        if (idx === -1) return out($('#crudOut'), 'Course not found');
+        const removed = db.courses.splice(idx, 1)[0];
+        out($('#crudOut'), removed);
+      };
+
+      // Exam Generation: pick up to 10 questions of a course
+      $('#btnGen').onclick = () => {
+        const crsId = Number($('#genCrs').value);
+        const q = db.questions.filter(x => x.Crs_ID === crsId);
+        const take = q.slice(0, 10).map(x => ({ Q_ID: x.Q_ID, Q_Text: x.Q_Text }));
+        out($('#genOut'), take.length ? take : 'No questions for this course');
+      };
+
+      // Exam Answers: save/update
+      $('#btnSaveAns').onclick = () => {
+        const st = Number($('#ansSt').value);
+        const ex = Number($('#ansEx').value);
+        const q = Number($('#ansQ').value);
+        const val = $('#ansVal').value.trim();
+        const existing = db.studentAnswers.find(a => a.St_ID === st && a.Exam_ID === ex && a.Q_ID === q);
+        if (existing) existing.Student_Answer = val; else db.studentAnswers.push({ St_ID: st, Exam_ID: ex, Q_ID: q, Student_Answer: val });
+        out($('#ansOut'), existing || { St_ID: st, Exam_ID: ex, Q_ID: q, Student_Answer: val });
+      };
+
+      // Exam Correction: compare to model answers and set percentage
+      $('#btnCorrect').onclick = () => {
+        const st = Number($('#corrSt').value);
+        const ex = Number($('#corrEx').value);
+        const qIds = db.examQuestions.filter(eq => eq.Exam_ID === ex).map(eq => eq.Q_ID);
+        if (!qIds.length) return out($('#corrOut'), 'Exam has no questions');
+        let correct = 0;
+        qIds.forEach(qid => {
+          const q = db.questions.find(x => x.Q_ID === qid);
+          const ans = db.studentAnswers.find(a => a.St_ID === st && a.Exam_ID === ex && a.Q_ID === qid)?.Student_Answer;
+          if (String(ans).toLowerCase() === String(q?.Model_Answer).toLowerCase()) correct += 1;
+        });
+        const percent = Math.round((correct / qIds.length) * 100);
+        const se = db.studentExams.find(x => x.St_ID === st && x.Exam_ID === ex);
+        if (se) se.Exam_Grade = percent;
+        out($('#corrOut'), { student: st, exam: ex, correct, total: qIds.length, percent });
+      };
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Instructors - ITI Examination</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+  </head>
+  <body>
+    <div data-mount="nav"></div>
+    <main class="container section">
+      <h1 class="section-title">Instructors</h1>
+      <p class="section-subtitle">Meet the training team.</p>
+      <div class="card reveal">
+        <table>
+          <thead><tr><th>Name</th><th>Department</th><th>Degree</th></tr></thead>
+          <tbody id="instRows"></tbody>
+        </table>
+      </div>
+    </main>
+    <div data-mount="footer"></div>
+    <script src="assets/js/components.js" defer></script>
+    <script type="module">
+      const instructors = [
+        { name: 'Ahmed Hassan', dept: 'Software', degree: 'M.Sc.' },
+        { name: 'Sara Ali', dept: 'Analytics', degree: 'Ph.D.' },
+        { name: 'Youssef Omar', dept: 'Operations', degree: 'B.Sc.' },
+        { name: 'Mona Ibrahim', dept: 'Mobile', degree: 'M.Sc.' },
+        { name: 'Ali Adel', dept: 'Embedded', degree: 'M.Eng.' },
+        { name: 'Reem Nabil', dept: 'Cloud', degree: 'Ph.D.' }
+      ];
+      document.querySelector('#instRows').innerHTML = instructors.map(i => `
+        <tr><td>${i.name}</td><td>${i.dept}</td><td>${i.degree}</td></tr>
+      `).join('');
+    </script>
+  </body>
+  </html>
+
+
