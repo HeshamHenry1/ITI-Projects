@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/new-style.css" />
     <link rel="stylesheet" href="assets/css/utilities.css" />
   </head>
   <body>
@@ -15,27 +16,76 @@
     <main class="container section">
       <h1 class="section-title">Instructors</h1>
       <p class="section-subtitle">Meet the training team.</p>
-      <div class="card reveal">
-        <table>
-          <thead><tr><th>Name</th><th>Department</th><th>Degree</th></tr></thead>
-          <tbody id="instRows"></tbody>
-        </table>
+      <div id="instructorsContainer" class="instructors-list">
+        <!-- سيتم إدراج كروت المدربين هنا تلقائيًا -->
       </div>
+
     </main>
+
+    <!-- يمكنك تجاهل هذه الأجزاء إذا لم تكن موجودة لديك -->
     <div data-mount="footer"></div>
     <script src="assets/js/components.js" defer></script>
+
+    <!-- =================== بداية كود JavaScript المدمج =================== -->
     <script type="module">
+      // 1. تعريف بيانات المدربين
       const instructors = [
-        { name: 'Ahmed Hassan', dept: 'Software', degree: 'M.Sc.' },
-        { name: 'Sara Ali', dept: 'Analytics', degree: 'Ph.D.' },
-        { name: 'Youssef Omar', dept: 'Operations', degree: 'B.Sc.' },
-        { name: 'Mona Ibrahim', dept: 'Mobile', degree: 'M.Sc.' },
-        { name: 'Ali Adel', dept: 'Embedded', degree: 'M.Eng.' },
-        { name: 'Reem Nabil', dept: 'Cloud', degree: 'Ph.D.' }
+        { 
+          name: 'Amany Shousha', 
+          title: 'Software Testing and Quality Assurance Dept. Head at ITI', 
+          img: 'https://maharatech.gov.eg/pluginfile.php/259017/block_cocoon_course_instructor/content/Amanay-shousha.png', 
+          bio: 'Amany has about 16 years of experience in S/W Testing and Quality Assurance. She finished her Master degree in Computer Software Engineering, 2007 - 2010. She has a Diploma in Computer Science and joined ITI 9 Month Program. Amany currently is Software Testing and Quality Assurance Dept. Head at Information Technology Institute (ITI ) from 2010.',
+          certificates: [
+            'ISTQB-CTFL certificate International Software Testing Qualification Board.',
+            'ISTQB Agile Tester Extension.'
+          ]
+        },
+        { 
+          name: 'Mai Elsayed ', 
+          title: 'Senior Testing Engineer Lead at ITI', 
+          img: 'https://maharatech.gov.eg/pluginfile.php/259014/block_cocoon_course_instructor/content/mai.png', 
+          bio: 'I am graduated from computer and information science Ain shams university After my graduation i decided to join testing track as i was so passionate of that filed and willing to know more and more about it, so i joined ITI diploma for testing and quality assurance track to gain knowledge as much as i can.',
+          certificates: [
+            'ISTQB Agile Tester Extension.',
+            'AWS Certified Solutions Architect – Associate'
+          ]
+        },
+        { 
+          name: 'Eman Abd El-Hamed Saad', 
+          title: 'SOFTWARE TEST TEAM LEAD AT CIB EGYPT  ', 
+          img: 'https://maharatech.gov.eg/pluginfile.php/259000/block_cocoon_course_instructor/content/eman%20photo-12.png', 
+          bio: 'Dr. Sara Ali is an expert in machine learning and data visualization. With a Ph.D. in Artificial Intelligence, she leads the analytics department, focusing on deriving insights from complex datasets.',
+          certificates: [
+            'TensorFlow Developer Certificate',
+            'Microsoft Certified: Azure Data Scientist Associate'
+          ]
+        }
+        // يمكنك إضافة باقي المدربين هنا بنفس الطريقة
       ];
-      document.querySelector('#instRows').innerHTML = instructors.map(i => `
-        <tr><td>${i.name}</td><td>${i.dept}</td><td>${i.degree}</td></tr>
-      `).join('');
+
+      // 2. العثور على الحاوية في الصفحة
+      const container = document.querySelector('#instructorsContainer' );
+
+      // 3. بناء كروت المدربين وإضافتها للصفحة
+      if (container) {
+        container.innerHTML = instructors.map(inst => `
+          <div class="instructor-card">
+            <div class="instructor-image">
+              <img src="${inst.img}" alt="Photo of ${inst.name}">
+            </div>
+            <div class="instructor-details">
+              <h2 class="instructor-name">${inst.name}</h2>
+              <p class="instructor-title">${inst.title}</p>
+              <p class="instructor-bio">${inst.bio}</p>
+              ${inst.certificates.length > 0 ? `
+                <ul class="instructor-certs">
+                  ${inst.certificates.map(cert => `<li>${cert}</li>`).join('')}
+                </ul>
+              ` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
     </script>
   </body>
   </html>

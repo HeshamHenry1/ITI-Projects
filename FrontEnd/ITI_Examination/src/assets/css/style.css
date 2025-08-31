@@ -75,6 +75,7 @@ img { max-width: 100%; display: block; }
 .card { background: linear-gradient(180deg, var(--surface), var(--surface-2)); border: 1px solid rgba(148,163,184,.1); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-md); }
 .card h3 { margin-top: 6px; margin-bottom: 6px; font-size: 20px; }
 .card p { color: var(--text-muted); }
+.card :hover { transform: translateY(-1px); }
 
 /* Sections */
 .section-title { font-size: 28px; margin: 0 0 16px; }

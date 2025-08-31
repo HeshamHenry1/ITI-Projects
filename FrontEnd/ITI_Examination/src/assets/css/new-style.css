@@ -1,0 +1,173 @@
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+  
+  .section-subtitle {
+    font-size: 18px;
+    color: #94a3b8;
+    margin-bottom: 40px;
+  }
+  
+  /* --- تنسيق شبكة الكروت --- */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  
+  /* --- حركة ظهور الكروت عند تحميل الصفحة --- */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* --- تنسيق الكارت الواحد --- */
+  .course-card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    /* تطبيق حركة الظهور */
+    opacity: 0; /* يبدأ شفافًا */
+    animation: fadeInUp 0.5s ease-out forwards;
+  
+    /* --- هذا هو الجزء الخاص بحركة الـ Hover --- */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px); /* يرتفع الكارت لأعلى قليلاً */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: #5eead4; /* تغيير لون الإطار عند الـ Hover */
+  }
+  
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0; /* يمنع الأيقونة من الانكماش */
+  }
+  
+  .card-content {
+    flex-grow: 1;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin: 0 0 8px 0;
+  }
+  
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #94a3b8;
+  }
+  
+  .card-price {
+    font-weight: bold;
+  }
+  
+  .card-price.free {
+    color: #f87171; /* لون أحمر فاتح لكلمة "مجاناً" */
+    font-weight: 800;
+  }
+
+  /* --- حاوية الكروت --- */
+.instructors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* مسافة بين كل مدرب والآخر */
+  }
+  
+  /* --- كارت المدرب الواحد --- */
+  .instructor-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px; /* مسافة بين الصورة والتفاصيل */
+  }
+  
+  /* --- صورة المدرب الدائرية --- */
+  .instructor-image {
+    flex-shrink: 0;
+  }
+  
+  .instructor-image img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%; /* لجعل الصورة دائرية */
+    border: 4px solid #a43535; /* إطار أحمر حول الصورة */
+    object-fit: cover; /* لضمان ملء الصورة للدائرة دون تشويه */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --- تفاصيل المدرب --- */
+  .instructor-details {
+    flex-grow: 1;
+  }
+  
+  .instructor-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #a43535; /* نفس اللون الأحمر */
+    margin: 0;
+  }
+  
+  .instructor-title {
+    font-size: 16px;
+    color: white;
+    margin-top: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .instructor-bio {
+    font-size: 15px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  /* --- قائمة الشهادات --- */
+  .instructor-certs {
+    list-style-type: none;
+    padding-right: 0; /* إزالة المسافة البادئة للقائمة */
+    margin: 0;
+    font-size: 15px;
+    color: white;
+  }
+  
+  .instructor-certs li {
+    position: relative;
+    padding-right: 20px; /* مسافة للنص بجانب الشرطة */
+    margin-bottom: 8px;
+  }
+  
+  .instructor-certs li::before {
+    content: '-'; /* إضافة شرطة قبل كل عنصر */
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #a43535;
+    font-weight: bold;
+  }
