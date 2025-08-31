@@ -9,66 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <script>
-        (function() {
-            var placeholder = 'https://via.placeholder.com/400x300?text=No+Image';
-            function applyFallback(img){
-                if (!img || img.dataset.fallback) return;
-                img.dataset.fallback = '1';
-                img.src = placeholder;
-                img.style.objectFit = 'cover';
-            }
-            function checkAndFix(img){
-                if (!img) return;
-                if (!img.complete || img.naturalWidth === 0) {
-                    applyFallback(img);
-                }
-                if (!img._onerrorBound) {
-                    img.onerror = function(){ applyFallback(img); };
-                    img._onerrorBound = true;
-                }
-            }
-            function init(){
-                var imgs = document.getElementsByTagName('img');
-                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
-                var mo = new MutationObserver(function(muts){
-                    for (var k=0;k<muts.length;k++){
-                        var m = muts[k];
-                        for (var j=0;j<m.addedNodes.length;j++){
-                            var node = m.addedNodes[j];
-                            if (node.tagName === 'IMG') checkAndFix(node);
-                            else if (node.querySelectorAll){
-                                var newImgs = node.querySelectorAll('img');
-                                for (var n=0;n<newImgs.length;n++){ checkAndFix(newImgs[n]); }
-                            }
-                        }
-                    }
-                });
-                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
-            }
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-        })();
-    </script>
+   
     <!-- Header -->
     <header class="header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="shipping-info">
-                        <span><i class="fas fa-truck"></i> شحن مجاني لاي أوردر فوق 1000ج في القاهرة والجيزة</span>
-                        <span><i class="fas fa-clock"></i> توصيل نفس اليوم لاي طلب قبل 1 ظهرا</span>
-                        <span><i class="fas fa-headset"></i> خدمة العملاء من 10ص الي 10م</span>
-                    </div>
-                    <div class="language-selector">
-                        <select>
-                            <option>العربية</option>
-                            <option>English</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+      
         <nav class="main-nav">
             <div class="container">
                 <div class="nav-content">
@@ -79,273 +23,88 @@
                     </div>
                     
                     <ul class="nav-menu">
-                        <li class="dropdown">
-                            <a href="dogs.html">مستلزمات الكلاب <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="dog-food.html">أكل الكلاب</a></li>
-                                <li><a href="dog-health.html">الصيدلة والعناية الصحية</a></li>
-                                <li><a href="dog-accessories.html">الإكسسوارات اليومية</a></li>
-                                <li><a href="dog-toys.html">ألعاب الذكاء والتحفيز</a></li>
-                            </ul>
+                        <li >
+                            <a href="dogs.html">مستلزمات الكلاب </i></a>
+                            
                         </li>
-                        <li class="dropdown">
-                            <a href="cats.html">مستلزمات القطط <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="cat-food.html">أكل القطط</a></li>
-                                <li><a href="cat-health.html">الصيدلة والعناية الصحية</a></li>
-                                <li><a href="cat-accessories.html">اكسسوارات</a></li>
-                                <li><a href="cat-litter.html">رمل القطط</a></li>
-                            </ul>
+                        <li >
+                            <a href="cats.html">مستلزمات القطط </a>
+                            
                         </li>
                         <li><a href="brands.html">العلامات التجارية</a></li>
                         <li><a href="offers.html">خصومات اليوم</a></li>
                     </ul>
                     
-                    <div class="nav-actions">
-                        <div class="search-box">
-                            <input type="text" placeholder="ابحث في موقعنا...">
-                            <button><i class="fas fa-search"></i></button>
-                        </div>
-                        <a href="wishlist.html" class="wishlist-icon">
-                            <i class="fas fa-heart"></i>
-                            <span class="count">0</span>
-                        </a>
-                        <a href="cart.html" class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="count">0</span>
-                        </a>
-                        <a href="login.html" class="login-btn">تسجيل الدخول</a>
-                    </div>
+                    
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Page Header -->
-    <section class="page-header">
+
+    <section class="hero-banner">
         <div class="container">
-            <h1>اتصل بنا</h1>
-            <nav class="breadcrumb">
-                <a href="index.html">الرئيسية</a>
-                <span>/</span>
-                <span>اتصل بنا</span>
-            </nav>
+            <img src="../Best_Vet_To_Bet/images/cat.avif" alt="قطة مسترخية على خلفية خضراء">
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-content">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h2>معلومات التواصل</h2>
-                    <p>نحن هنا لمساعدتك في أي استفسار أو طلب. لا تتردد في التواصل معنا!</p>
-                    
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>الهاتف</h3>
-                                <p>01022337450</p>
-                                <p>01234567890</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>البريد الإلكتروني</h3>
-                                <p>care@happet.net</p>
-                                <p>info@happet.net</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>العنوان</h3>
-                                <p>123 شارع الحيوانات الأليفة</p>
-                                <p>القاهرة، مصر</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>ساعات العمل</h3>
-                                <p>الأحد - الخميس: 10:00 ص - 10:00 م</p>
-                                <p>الجمعة - السبت: 11:00 ص - 9:00 م</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="social-media">
-                        <h3>تابعنا على وسائل التواصل الاجتماعي</h3>
-                        <div class="social-links">
-                            <a href="#" class="social-link facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-link instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-link twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper">
-                    <h2>أرسل لنا رسالة</h2>
-                    <form class="contact-form" action="#" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">الاسم الأول *</label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">الاسم الأخير *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">البريد الإلكتروني *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">رقم الهاتف *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">نوع الاستفسار *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">اختر نوع الاستفسار</option>
-                                <option value="general">استفسار عام</option>
-                                <option value="order">استفسار عن الطلب</option>
-                                <option value="product">استفسار عن المنتج</option>
-                                <option value="shipping">استفسار عن الشحن</option>
-                                <option value="return">استرجاع المنتج</option>
-                                <option value="complaint">شكوى</option>
-                                <option value="suggestion">اقتراح</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="priority">الأولوية</label>
-                            <div class="radio-group">
-                                <label class="radio-label">
-                                    <input type="radio" name="priority" value="low" checked>
-                                    <span class="radio-custom"></span>
-                                    منخفضة
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="priority" value="medium">
-                                    <span class="radio-custom"></span>
-                                    متوسطة
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="priority" value="high">
-                                    <span class="radio-custom"></span>
-                                    عالية
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">الرسالة *</label>
-                            <textarea id="message" name="message" rows="6" placeholder="اكتب رسالتك هنا..." required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="newsletter" id="newsletter">
-                                <span class="checkbox-custom"></span>
-                                أريد الاشتراك في النشرة البريدية للحصول على آخر العروض والأخبار
-                            </label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="agreement" id="agreement" required>
-                                <span class="checkbox-custom"></span>
-                                أوافق على <a href="privacy.html">سياسة الخصوصية</a> و <a href="terms.html">الشروط والأحكام</a> *
-                            </label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <i class="fas fa-paper-plane"></i>
-                            إرسال الرسالة
-                        </button>
-                    </form>
-                </div>
+<section class="help-section">
+    <div class="container">
+        <div class="help-header">
+            <h2>كيف يمكننا مساعدتك؟</h2>
+        </div>
+        <div class="help-options">
+            <div class="help-option">
+                <i class="fas fa-phone-alt"></i>
+                <h3>اتصل بنا مجاناً</h3>
+                <p>01022337450</p>
+            </div>
+            <div class="help-option">
+                <i class="fas fa-comments"></i>
+                <h3>محادثة مباشرة</h3>
+                <!-- هذا هو الزر الذي سيفتح الفورم -->
+                <button id="open-chat-btn" class="btn-chat">تحدث الآن</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">الأسئلة الشائعة</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>كيف يمكنني تتبع طلبي؟</h3>
-                        <i class="fas fa-chevron-down"></i>
+
+<div id="contact-form-popup" class="form-popup-overlay">
+    <div class="form-popup-container">
+     
+        <button id="close-form-btn" class="close-btn">&times;</button>
+        
+        
+        <div class="contact-form-wrapper">
+            <h2>أرسل لنا رسالة</h2>
+            <p>املأ النموذج أدناه وسيقوم أحد أعضاء فريقنا بالرد عليك قريباً.</p>
+            <form class="contact-form" action="#" method="POST">
+              
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">الاسم الأول *</label>
+                        <input type="text" id="firstName" name="firstName" required>
                     </div>
-                    <div class="faq-answer">
-                        <p>يمكنك تتبع طلبك من خلال الدخول إلى حسابك والذهاب إلى صفحة "طلباتي" أو من خلال الرابط المرسل لك عبر البريد الإلكتروني.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>ما هي سياسة الاسترجاع؟</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>يمكنك استرجاع المنتج خلال 14 يوم من تاريخ الاستلام بشرط أن يكون في حالة جيدة وفي العبوة الأصلية.</p>
+                    <div class="form-group">
+                        <label for="lastName">الاسم الأخير *</label>
+                        <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>هل الشحن مجاني؟</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>نعم، الشحن مجاني لجميع الطلبات التي تزيد قيمتها عن 1000 جنيه في القاهرة والجيزة.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="message">الرسالة *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>ما هي طرق الدفع المتاحة؟</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>نقبل الدفع عند الاستلام، البطاقات الائتمانية، المحافظ الإلكترونية، والتحويل البنكي.</p>
-                    </div>
-                </div>
-            </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-paper-plane"></i>
+                    إرسال الرسالة
+                </button>
+            </form>
         </div>
-    </section>
+    </div>
+</div>
+
+   
 
     <!-- Map Section -->
     <section class="map-section">
@@ -407,6 +166,30 @@
             </div>
         </div>
     </footer>
+    <script>
+        // الحصول على العناصر من الصفحة
+        const openChatBtn = document.getElementById('open-chat-btn');
+        const closeFormBtn = document.getElementById('close-form-btn');
+        const formPopup = document.getElementById('contact-form-popup');
+    
+        // عند الضغط على زر "تحدث الآن"
+        openChatBtn.addEventListener('click', () => {
+            formPopup.classList.add('active'); // أضف كلاس .active لإظهار النافذة
+        });
+    
+        // عند الضغط على زر الإغلاق
+        closeFormBtn.addEventListener('click', () => {
+            formPopup.classList.remove('active'); // أزل كلاس .active لإخفاء النافذة
+        });
+    
+        // إغلاق النافذة عند الضغط على الخلفية السوداء
+        formPopup.addEventListener('click', (event) => {
+            // تحقق مما إذا كان الضغط على الخلفية نفسها وليس على الفورم
+            if (event.target === formPopup) {
+                formPopup.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
 

@@ -9,65 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <script>
-        (function() {
-            var placeholder = 'https://via.placeholder.com/400x300?text=No+Image';
-            function applyFallback(img){
-                if (!img || img.dataset.fallback) return;
-                img.dataset.fallback = '1';
-                img.src = placeholder;
-                img.style.objectFit = 'cover';
-            }
-            function checkAndFix(img){
-                if (!img) return;
-                if (!img.complete || img.naturalWidth === 0) {
-                    applyFallback(img);
-                }
-                if (!img._onerrorBound) {
-                    img.onerror = function(){ applyFallback(img); };
-                    img._onerrorBound = true;
-                }
-            }
-            function init(){
-                var imgs = document.getElementsByTagName('img');
-                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
-                var mo = new MutationObserver(function(muts){
-                    for (var k=0;k<muts.length;k++){
-                        var m = muts[k];
-                        for (var j=0;j<m.addedNodes.length;j++){
-                            var node = m.addedNodes[j];
-                            if (node.tagName === 'IMG') checkAndFix(node);
-                            else if (node.querySelectorAll){
-                                var newImgs = node.querySelectorAll('img');
-                                for (var n=0;n<newImgs.length;n++){ checkAndFix(newImgs[n]); }
-                            }
-                        }
-                    }
-                });
-                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
-            }
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-        })();
-    </script>
+  
     <!-- Header -->
     <header class="header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="shipping-info">
-                        <span><i class="fas fa-truck"></i> شحن مجاني لاي أوردر فوق 1000ج في القاهرة والجيزة</span>
-                        <span><i class="fas fa-clock"></i> توصيل نفس اليوم لاي طلب قبل 1 ظهرا</span>
-                        <span><i class="fas fa-headset"></i> خدمة العملاء من 10ص الي 10م</span>
-                    </div>
-                    <div class="language-selector">
-                        <select>
-                            <option>العربية</option>
-                            <option>English</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         
         <nav class="main-nav">
             <div class="container">
@@ -79,43 +24,19 @@
                     </div>
                     
                     <ul class="nav-menu">
-                        <li class="dropdown">
-                            <a href="dogs.html">مستلزمات الكلاب <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="dog-food.html">أكل الكلاب</a></li>
-                                <li><a href="dog-health.html">الصيدلة والعناية الصحية</a></li>
-                                <li><a href="dog-accessories.html">الإكسسوارات اليومية</a></li>
-                                <li><a href="dog-toys.html">ألعاب الذكاء والتحفيز</a></li>
-                            </ul>
+                        <li>
+                            <a href="dogs.html">مستلزمات الكلاب </a>
+                            
                         </li>
-                        <li class="dropdown">
-                            <a href="cats.html">مستلزمات القطط <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="cat-food.html">أكل القطط</a></li>
-                                <li><a href="cat-health.html">الصيدلة والعناية الصحية</a></li>
-                                <li><a href="cat-accessories.html">اكسسوارات</a></li>
-                                <li><a href="cat-litter.html">رمل القطط</a></li>
-                            </ul>
+                        <li>
+                            <a href="cats.html">مستلزمات القطط </a>
+                            
                         </li>
                         <li><a href="brands.html">العلامات التجارية</a></li>
                         <li><a href="offers.html">خصومات اليوم</a></li>
                     </ul>
                     
-                    <div class="nav-actions">
-                        <div class="search-box">
-                            <input type="text" placeholder="ابحث في موقعنا...">
-                            <button><i class="fas fa-search"></i></button>
-                        </div>
-                        <a href="wishlist.html" class="wishlist-icon">
-                            <i class="fas fa-heart"></i>
-                            <span class="count">0</span>
-                        </a>
-                        <a href="cart.html" class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="count">0</span>
-                        </a>
-                        <a href="login.html" class="login-btn">تسجيل الدخول</a>
-                    </div>
+                  
                 </div>
             </div>
         </nav>
@@ -189,7 +110,7 @@
                 <!-- Product Card 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/product1.jpg" alt="Royal Canin للكلاب">
+                        <img src="../Best_Vet_To_Bet/images/Royal Canin.webp" alt="Royal Canin للكلاب">
                         <div class="product-badges">
                             <span class="badge new">جديد</span>
                             <span class="badge discount">-15%</span>
@@ -227,7 +148,7 @@
                 <!-- Product Card 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/product2.jpg" alt="Whiskas للقطط">
+                        <img src="../Best_Vet_To_Bet/images/cat-soft-food.webp" alt="Whiskas للقطط">
                         <div class="product-badges">
                             <span class="badge bestseller">الأكثر مبيعاً</span>
                         </div>
@@ -263,7 +184,7 @@
                 <!-- Product Card 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/product3.jpg" alt="طوق كلاب">
+                        <img src="../Best_Vet_To_Bet/images/product3.jpeg" alt="طوق كلاب">
                         <div class="product-actions">
                             <button class="action-btn wishlist">
                                 <i class="fas fa-heart"></i>
@@ -296,7 +217,7 @@
                 <!-- Product Card 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/product4.jpg" alt="رمل القطط">
+                        <img src="../Best_Vet_To_Bet/images/cat-litter.webp" alt="رمل القطط">
                         <div class="product-badges">
                             <span class="badge discount">-20%</span>
                         </div>
@@ -354,7 +275,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <img src="images/product1.jpg" alt="Royal Canin" class="table-product-image">
+                                <img src="../Best_Vet_To_Bet/images/Royal Canin.webp" alt="Royal Canin" class="table-product-image">
                             </td>
                             <td>Royal Canin للكلاب البالغة</td>
                             <td>أكل الكلاب</td>
@@ -382,7 +303,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="images/product2.jpg" alt="Whiskas" class="table-product-image">
+                                <img src="../Best_Vet_To_Bet/images/cat-soft-food.webp" alt="Whiskas" class="table-product-image">
                             </td>
                             <td>Whiskas أكل رطب للقطط</td>
                             <td>أكل القطط</td>
@@ -409,7 +330,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="images/product3.jpg" alt="طوق كلاب" class="table-product-image">
+                                <img src="../Best_Vet_To_Bet/images/product3.jpeg" alt="طوق كلاب" class="table-product-image">
                             </td>
                             <td>طوق جلدي للكلاب</td>
                             <td>الإكسسوارات</td>
@@ -436,7 +357,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="images/product4.jpg" alt="رمل القطط" class="table-product-image">
+                                <img src="../Best_Vet_To_Bet/images/cat-litter.webp" alt="رمل القطط" class="table-product-image">
                             </td>
                             <td>رمل القطط عالي الامتصاص</td>
                             <td>رمل القطط</td>

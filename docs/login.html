@@ -10,56 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script>
-        (function() {
-            var placeholder = 'https://via.placeholder.com/400x300?text=No+Image';
-            function applyFallback(img){
-                if (!img || img.dataset.fallback) return;
-                img.dataset.fallback = '1';
-                img.src = placeholder;
-                img.style.objectFit = 'cover';
-            }
-            function checkAndFix(img){
-                if (!img) return;
-                if (!img.complete || img.naturalWidth === 0) {
-                    applyFallback(img);
-                }
-                if (!img._onerrorBound) {
-                    img.onerror = function(){ applyFallback(img); };
-                    img._onerrorBound = true;
-                }
-            }
-            function init(){
-                var imgs = document.getElementsByTagName('img');
-                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
-                var mo = new MutationObserver(function(muts){
-                    for (var k=0;k<muts.length;k++){
-                        var m = muts[k];
-                        for (var j=0;j<m.addedNodes.length;j++){
-                            var node = m.addedNodes[j];
-                            if (node.tagName === 'IMG') checkAndFix(node);
-                            else if (node.querySelectorAll){
-                                var newImgs = node.querySelectorAll('img');
-                                for (var n=0;n<newImgs.length;n++){ checkAndFix(newImgs[n]); }
-                            }
-                        }
-                    }
-                });
-                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
-            }
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-        })();
-    </script>
-    <script>
-        document.addEventListener('error', function (e) {
-            const target = e.target;
-            if (target.tagName === 'IMG' && !target.dataset.fallback) {
-                target.dataset.fallback = '1';
-                target.src = 'https://via.placeholder.com/400x300?text=No+Image';
-                target.style.objectFit = 'cover';
-            }
-        }, true);
-    </script>
+    
+   
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -151,7 +103,7 @@
                 <div class="login-image">
                     <div class="image-overlay">
                         <div class="overlay-content">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="طبيب بيطري" class="login-hero-img">
+                            <img src="../Best_Vet_To_Bet/images/graha.jfif" alt="طبيب بيطري" class="login-hero-img">
                             <h3>رعاية بيطرية احترافية</h3>
                             <p>تواصل مع أطباء بيطريين معتمدين واحصل على خدمات رعاية الحيوانات الأليفة المتميزة. حيواناتك تستحق أفضل رعاية من متخصصين ذوي خبرة.</p>
                             <div class="features-list">
