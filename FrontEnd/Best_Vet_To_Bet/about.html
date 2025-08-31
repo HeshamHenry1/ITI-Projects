@@ -9,43 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <script>
-        (function() {
-            var placeholder = 'https://via.placeholder.com/800x500?text=No+Image';
-            function applyFallback(img){
-                if (!img || img.dataset.fallback) return;
-                img.dataset.fallback = '1';
-                img.src = placeholder;
-                img.style.objectFit = 'cover';
-            }
-            function checkAndFix(img){
-                if (!img) return;
-                if (!img.complete || img.naturalWidth === 0) {
-                    applyFallback(img);
-                }
-                if (!img._onerrorBound) {
-                    img.onerror = function(){ applyFallback(img); };
-                    img._onerrorBound = true;
-                }
-            }
-            function init(){
-                var imgs = document.getElementsByTagName('img');
-                for (var i=0;i<imgs.length;i++){ checkAndFix(imgs[i]); }
-                var mo = new MutationObserver(function(muts){
-                    muts.forEach(function(m){
-                        m.addedNodes.forEach(function(node){
-                            if (node.tagName === 'IMG') checkAndFix(node);
-                            else if (node.querySelectorAll){
-                                node.querySelectorAll('img').forEach(checkAndFix);
-                            }
-                        });
-                    });
-                });
-                mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
-            }
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-        })();
-    </script>
+   
 </head>
 <body>
     <!-- Header -->
@@ -94,7 +58,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=1200&h=800&fit=crop" alt="فريق بيطري" />
+                    <img src="../Best_Vet_To_Bet/images/care.png" alt="فريق بيطري" />
                 </div>
             </div>
         </div>
@@ -133,7 +97,7 @@
                     <p>اليوم نقدم مجموعة متكاملة من الخدمات: الفحوصات، العمليات الجراحية، التطعيمات، الطوارئ، وخدمات المنتجات المتخصصة عبر متجرنا.</p>
                 </div>
                 <div class="story-image">
-                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1200&h=800&fit=crop" alt="عيادة بيطرية" />
+                    <img src="../Best_Vet_To_Bet/images/emergency.jpg" alt="عيادة بيطرية" />
                 </div>
             </div>
         </div>
@@ -146,12 +110,12 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="طبيب بيطري" />
+                        <img src="../Best_Vet_To_Bet/images/Amanay-shousha.png" alt="طبيب بيطري" />
                     </div>
                     <div class="member-info">
-                        <h3>د. أحمد علي</h3>
+                        <h3>د.  امانى شوشه </h3>
                         <div class="member-position">استشاري طب وجراحة</div>
-                        <div class="member-description">خبرة واسعة في الجراحات المعقدة ورعاية الطوارئ للحيوانات الأليفة.</div>
+                        <div class="member-description">خبرة واسعة في الجراحات المعقدة ورعاية وتطوىر الطلبه    .</div>
                         <div class="member-social">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -161,7 +125,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&h=600&fit=crop" alt="أخصائي" />
+                        <img src="../Best_Vet_To_Bet/images/sara.jpg" alt="أخصائي" />
                     </div>
                     <div class="member-info">
                         <h3>د. سارة محمود</h3>
@@ -176,7 +140,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop" alt="فني" />
+                        <img src="../Best_Vet_To_Bet/images/karem.jpg" alt="فني" />
                     </div>
                     <div class="member-info">
                         <h3>م. كريم منصور</h3>
