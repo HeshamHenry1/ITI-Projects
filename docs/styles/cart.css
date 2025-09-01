@@ -1,5 +1,14 @@
 /* Cart Page Specific Styles */
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap' );
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Cairo', sans-serif;
     line-height: 1.6;
@@ -7,6 +16,7 @@ body {
     background-color: #F8F9FA;
     direction: rtl;
 }
+
 .font-cairo {
     font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
   }
