@@ -19,45 +19,6 @@ body {
     padding: 0 20px;
 }
 
-/* Top Bar */
-.top-bar {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #2C3E50;
-    padding: 8px 0;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.top-bar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.top-bar-left span {
-    margin-left: 20px;
-}
-
-.top-bar-left i {
-    margin-left: 5px;
-    color: #2C3E50;
-}
-
-.top-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-
-.top-bar-right a {
-    color: #2C3E50;
-    transition: color 0.3s ease;
-}
-
-.top-bar-right a:hover {
-    color: #3498DB;
-}
 
 /* Icon animations */
 .icon-hover,
