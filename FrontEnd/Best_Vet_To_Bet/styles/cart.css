@@ -1,4 +1,23 @@
 /* Cart Page Specific Styles */
+
+body {
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.6;
+    color: #2C3E50;
+    background-color: #F8F9FA;
+    direction: rtl;
+}
+.font-cairo {
+    font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+.header {
+    background: white;
+    box-shadow : 0 2px 15px rgba(255, 215, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 /* Page Header */
 .page-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
